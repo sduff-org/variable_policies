@@ -1,0 +1,42 @@
+name: 'On Pushes and Pulls'
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Setup OPA
+        uses: open-policy-agent/setup-opa@v2
+        
+      - name: Get User's team bindings
+        uses: tspascoal/get-user-teams-membership@v2
+        id: actorTeams
+        with:
+          username: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+
+      - name: Terraform init
+      
+      - name: Terraform plan
+      
+      - name: Non Admin user requires additional policies
+        if: ${{ !(contains(steps.actorTeams.outputs.teams, 'admin') }}
+        steps:
+          - run: echo 'Running OPA for user'
+          - run: echo 'Running OPA for user'
+
+      - name: Check all params
+      
+      - name: Do terraform apply if push to main
+          
+        
