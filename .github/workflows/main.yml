@@ -26,17 +26,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Terraform init
+        run: echo 'Runinng Terraform init'
       
       - name: Terraform plan
-      
+        run: echo 'Running Terraform plan'
+
       - name: Non Admin user requires additional policies
         if: ${{ !(contains(steps.actorTeams.outputs.teams, 'admin') }}
-        steps:
-          - run: echo 'Running OPA for user'
-          - run: echo 'Running OPA for user'
+        run: |
+          echo 'Running OPA Policy 1 for user'
+          echo 'Running OPA Policy 2 for user'
 
       - name: Check all params
+        run: echo 'Checking results'
       
       - name: Do terraform apply if push to main
-          
-        
+        run: echo 'Running Terraform apply'
