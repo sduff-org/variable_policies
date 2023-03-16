@@ -32,7 +32,7 @@ jobs:
         run: echo 'Running Terraform plan'
 
       - name: Non Admin user requires additional policies
-        if: ${{ !(contains(steps.actorTeams.outputs.teams, 'admin') }}
+        if: ${{ !(contains(steps.actorTeams.outputs.teams, 'admin')) }}
         run: |
           echo 'Running OPA Policy 1 for user'
           echo 'Running OPA Policy 2 for user'
