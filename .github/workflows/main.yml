@@ -23,7 +23,7 @@ jobs:
         id: actorTeams
         with:
           username: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SDUFF_ORG_READ_TOKEN }}
 
       - name: Terraform init
         run: echo 'Runinng Terraform init'
